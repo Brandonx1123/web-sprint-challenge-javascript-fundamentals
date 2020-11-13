@@ -51,15 +51,14 @@ const zooAnimals = [
   /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
   The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
   */
-  function animalNames(){
+  function animalNames(data){
     const displayNames = [];
-    zooAnimals.forEach(function(item){
-      return displayNames.push(item['animal_name'], item['scientific_name'])
+    let namer = data.forEach(function(item){
+      displayNames.push( `name: ${item.animal_name}, scientific: ${item.scientific_name}`)
 
     });
-    return displayNames;
+    return displayNames
   }
-  animalNames();
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
@@ -164,7 +163,7 @@ CuboidMaker.prototype.volume = function(){
   2 * (length * width + length * height + width * height)  */
 
 CuboidMaker.prototype.surfaceArea = function(){
-  return 2 *(this.length * this.width * this.height) + (this.length + this.width + this.height);
+  return 2 *(this.length * this.width + this.length * this.height +this.width * this.height);
 }
 
 
@@ -173,9 +172,9 @@ CuboidMaker.prototype.surfaceArea = function(){
   Create a cuboid object that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-// CuboidMaker.prototype = Object.create(Cuboid.prototype);
 
-// let CuboidOne = new Cuboid({
+
+// Const cuboid = new CuboidMaker({
 // length: 4,
 // width: 5,
 // height: 5,
@@ -201,7 +200,7 @@ volume(){
   return this.length * this.width * this.height;
 }
 surfaceArea(){
-  return 2* (this.length * this.width * this.height) + (this.length +this.width + this.height)
+  return 2 *(this.length * this.width + this.length * this.height +this.width * this.height);
 }
 }
 
